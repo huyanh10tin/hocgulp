@@ -1,5 +1,7 @@
 'use strict';
-angular.module('confusionApp',[]).controller('MenuController',['$scope','menuFactory',function($scope, menuFactory) {
+var myApp = angular.module('confusionApp',[]);
+
+myApp.controller('MenuController',['$scope','menuFactory',function($scope, menuFactory) {
   $scope.tab = 1;
   $scope.filtText = '';
   
@@ -30,8 +32,9 @@ angular.module('confusionApp',[]).controller('MenuController',['$scope','menuFac
   $scope.toggleDetails = function(){
     $scope.showDetails = !$scope.showDetails;
   };
-}])
-  .controller('ContactController',['$scope',function($scope){
+}]);
+
+  myApp.controller('ContactController',['$scope',function($scope){
     $scope.feedback = {
       mychannel:"",firstName:"",lastName:"",
       agree:false,email:""
@@ -39,8 +42,9 @@ angular.module('confusionApp',[]).controller('MenuController',['$scope','menuFac
     var channels = [{value:"tel",label:"Tel."},{value:"Email",label:"Email."}];
     $scope.channels=channels;
     $scope.invalidChannelSelection = false;
-  }])
-  .controller('FeedbackController',['$scope',function($scope){
+  }]);
+
+  myApp.controller('FeedbackController',['$scope',function($scope){
     $scope.sendFeedback = function(){
       console.log($scope.feedback);
       if($scope.feedback.agree && ($scope.feedback.mychannel === "") && !$scope.feedback.mychannel){
@@ -55,15 +59,17 @@ angular.module('confusionApp',[]).controller('MenuController',['$scope','menuFac
         console.log($scope.feedback);
       }
     };
-  }])
-  .controller('DishDetailController', ['$scope','menuFactory', function($scope, menuFactory) {
+  }]);
+  
+  myApp.controller('DishDetailController', ['$scope','menuFactory', function($scope, menuFactory) {
 
             var dish = menuFactory.getDish(3);
             
             $scope.dish = dish;
             
-        }])
-  .controller('DishCommentController', ['$scope', function($scope) {
+        }]);
+
+  myApp.controller('DishCommentController', ['$scope', function($scope) {
             
             //Step 1: Create a JavaScript object to hold the comment from the form
             $scope.commentObject = {

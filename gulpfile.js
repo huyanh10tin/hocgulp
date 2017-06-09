@@ -77,7 +77,7 @@ gulp.task('browser-sync', ['default'], function () {
       server: {
          // baseDir: "dist",
          // index: "menu.html"
-         baseDir: './dist',
+         baseDir: 'dist',
          index: "index.html"
       }
       
@@ -85,3 +85,6 @@ gulp.task('browser-sync', ['default'], function () {
         // Watch any files in dist/, reload on change
   gulp.watch(['dist/**']).on('change', browserSync.reload);
     });
+gulp.task('clear', function (done) {
+  return cache.clearAll(done);
+});
